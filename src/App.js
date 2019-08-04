@@ -2,20 +2,14 @@ import React, { Component, Fragment } from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
 
 import firebase from 'firebase';
+import firebaseConfig from '../firebase.config.json';
 
 import Header from './components/Header';
 
 class App extends Component {
   componentWillMount() {
-    firebase.initializeApp({
-      apiKey: 'AIzaSyAb5rciElq7_MenS-N8qvDgYJTyXYqHY24',
-      authDomain: 'reactnativeauth-f30b6.firebaseapp.com',
-      databaseURL: 'https://reactnativeauth-f30b6.firebaseio.com',
-      projectId: 'reactnativeauth-f30b6',
-      storageBucket: '',
-      messagingSenderId: '591152581515',
-      appId: '1:591152581515:web:000e08681688f34c',
-    });
+    console.log(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
   }
 
   render() {
@@ -25,7 +19,9 @@ class App extends Component {
         <SafeAreaView>
           <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
             <Header />
-            <View style={styles.body} />
+            <View style={styles.body}>
+              <Text>{firebaseConfig.projectId}</Text>
+            </View>
           </ScrollView>
         </SafeAreaView>
       </Fragment>
